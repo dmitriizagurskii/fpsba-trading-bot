@@ -10,4 +10,4 @@ The solution consists of two submodules:
 - Code coverage - JaCoCo
 - Code style - PMD
 - Web - Spring Boot
-- Web Documentation - Swagger, OpenApi
+- Web Documentation - Swagger, OpenAPI
