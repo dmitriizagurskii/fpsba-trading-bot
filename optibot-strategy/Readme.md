@@ -9,7 +9,7 @@ and [AdvancedStrategyBidder](src/main/java/com/dzagurskii/auction/bidder/Advance
 
 SingleStrategyBidder requires strategy to be passed as a constructor parameter. If not set it uses random bid strategy.
 
-AbstractStrategyBidder uses following logic to calculate next bid:
+AdvancedStrategyBidder uses following logic to calculate next bid:
 
 - If bidder's quantity or remaining cash is greater than opponent's then use average bid strategy.
 - Use random bid strategy otherwise.
@@ -21,7 +21,7 @@ are 5 bid strategies implemented:
 
 1. Zero bid strategy - place 0 bid regardless of conditions.
 2. Random bid strategy - place random bid bounded by the remaining cash.
-3. Constant bid strategy - calculate remaining cash divided by remaining rounds.
+3. Constant bid strategy - place bid by calculating remaining cash divided by remaining rounds.
 4. Median bid strategy - find the median amongst all recorded winning bids.
 5. Average bid strategy - find the average amongst all recorded winning bids.
 
