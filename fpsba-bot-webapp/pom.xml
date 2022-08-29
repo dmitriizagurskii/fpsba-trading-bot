@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.dzagurskii.auction</groupId>
+        <artifactId>fpsba-bot-parent</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>fpsba-bot-webapp</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <spring.boot.version>2.7.3</spring.boot.version>
+        <springdoc.version>1.6.10</springdoc.version>
+    </properties>
+
+    <modules>
+        <module>fpsba-bot-webapp-api</module>
+        <module>fpsba-bot-webapp-impl</module>
+        <module>fpsba-bot-webapp-web</module>
+        <module>fpsba-bot-webapp-app</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.dzagurskii.auction</groupId>
+                <artifactId>fpsba-bot-strategy</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dzagurskii.auction</groupId>
+                <artifactId>fpsba-bot-webapp-web</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dzagurskii.auction</groupId>
+                <artifactId>fpsba-bot-webapp-impl</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dzagurskii.auction</groupId>
+                <artifactId>fpsba-bot-webapp-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
