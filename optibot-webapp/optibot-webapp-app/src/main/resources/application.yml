@@ -1,4 +1,0 @@
-spring:
-  server:
-    port: 8080
-  mvc.pathmatch.matching-strategy: ant-path-matcher
