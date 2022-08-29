@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.dzagurskii.auction</groupId>
-        <artifactId>fpsba-bot-parent</artifactId>
+        <artifactId>optibot-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <artifactId>fpsba-bot-webapp</artifactId>
+    <artifactId>optibot-webapp</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
@@ -22,9 +22,9 @@
     </properties>
 
     <modules>
-        <module>fpsba-bot-webapp-api</module>
-        <module>fpsba-bot-webapp-impl</module>
-        <module>fpsba-bot-webapp-app</module>
+        <module>optibot-webapp-api</module>
+        <module>optibot-webapp-impl</module>
+        <module>optibot-webapp-app</module>
     </modules>
 
     <dependencyManagement>
@@ -45,17 +45,12 @@
 
             <dependency>
                 <groupId>com.dzagurskii.auction</groupId>
-                <artifactId>fpsba-bot-strategy</artifactId>
+                <artifactId>optibot-webapp-impl</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.dzagurskii.auction</groupId>
-                <artifactId>fpsba-bot-webapp-impl</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dzagurskii.auction</groupId>
-                <artifactId>fpsba-bot-webapp-api</artifactId>
+                <artifactId>optibot-webapp-api</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

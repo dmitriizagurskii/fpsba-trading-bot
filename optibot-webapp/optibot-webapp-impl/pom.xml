@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>fpsba-bot-webapp</artifactId>
+        <artifactId>optibot-webapp</artifactId>
         <groupId>com.dzagurskii.auction</groupId>
         <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>fpsba-bot-webapp-impl</artifactId>
+    <artifactId>optibot-webapp-impl</artifactId>
 
     <dependencies>
         <dependency>
@@ -24,11 +24,11 @@
         </dependency>
         <dependency>
             <groupId>com.dzagurskii.auction</groupId>
-            <artifactId>fpsba-bot-webapp-api</artifactId>
+            <artifactId>optibot-webapp-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.dzagurskii.auction</groupId>
-            <artifactId>fpsba-bot-strategy</artifactId>
+            <artifactId>optibot-strategy</artifactId>
         </dependency>
     </dependencies>
 

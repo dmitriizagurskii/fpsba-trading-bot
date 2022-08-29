@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dzagurskii.auction</groupId>
-    <artifactId>fpsba-bot-parent</artifactId>
+    <artifactId>optibot-parent</artifactId>
     <packaging>pom</packaging>
     <version>${revision}</version>
 
     <modules>
-        <module>fpsba-bot-strategy</module>
-        <module>fpsba-bot-webapp</module>
+        <module>optibot-strategy</module>
+        <module>optibot-webapp</module>
     </modules>
 
     <properties>
@@ -30,7 +30,7 @@
         <dependencies>
             <dependency>
                 <groupId>com.dzagurskii.auction</groupId>
-                <artifactId>fpsba-bot-strategy</artifactId>
+                <artifactId>optibot-strategy</artifactId>
                 <version>${revision}</version>
                 <scope>compile</scope>
             </dependency>
