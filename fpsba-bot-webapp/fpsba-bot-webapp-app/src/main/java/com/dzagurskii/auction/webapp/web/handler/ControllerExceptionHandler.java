@@ -16,10 +16,4 @@ public class ControllerExceptionHandler {
         return ResponseEntity.badRequest()
                 .body(new ErrorResponse(exception.getMessage()));
     }
-
-    @ExceptionHandler
-    public ResponseEntity<ErrorResponse> handle(Exception exception) {
-        return ResponseEntity.internalServerError()
-                .body(new ErrorResponse(exception.getMessage()));
-    }
 }

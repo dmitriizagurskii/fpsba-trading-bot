@@ -17,7 +17,7 @@ public class AuctionTest {
     @ParameterizedTest
     @EnumSource(BidStrategyHolder.class)
     public void auctionTest(BidStrategyHolder baselineStrategy) {
-        int repeats = 100;
+        int repeats = 50;
         List<AuctionResult> auctionResults =
                 IntStream.range(0, repeats)
                         .parallel()

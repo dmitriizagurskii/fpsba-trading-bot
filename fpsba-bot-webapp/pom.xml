@@ -18,12 +18,12 @@
 
         <spring.boot.version>2.7.3</spring.boot.version>
         <springdoc.version>1.6.10</springdoc.version>
+        <openapi.version>1.4</openapi.version>
     </properties>
 
     <modules>
         <module>fpsba-bot-webapp-api</module>
         <module>fpsba-bot-webapp-impl</module>
-        <module>fpsba-bot-webapp-web</module>
         <module>fpsba-bot-webapp-app</module>
     </modules>
 
@@ -50,11 +50,6 @@
             </dependency>
             <dependency>
                 <groupId>com.dzagurskii.auction</groupId>
-                <artifactId>fpsba-bot-webapp-web</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.dzagurskii.auction</groupId>
                 <artifactId>fpsba-bot-webapp-impl</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -65,4 +60,56 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <executions>
+                        <execution>
+                            <id>pre-integration-test</id>
+                            <goals>
+                                <goal>start</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>post-integration-test</id>
+                            <goals>
+                                <goal>stop</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <configuration>
+                        <rulesets>
+                            <ruleset>${project.parent.parent.basedir}/pmd-ruleset.xml</ruleset>
+                        </rulesets>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springdoc</groupId>
+                    <artifactId>springdoc-openapi-maven-plugin</artifactId>
+                    <version>${openapi.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>integration-test</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <outputFileName>openapi.json</outputFileName>
+                        <outputDir>${project.parent.basedir}/documentation</outputDir>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

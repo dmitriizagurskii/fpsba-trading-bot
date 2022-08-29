@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/bot")
-public class BidderController extends V1Controller {
+@RequestMapping("/api/v1/bot")
+public class BidderController {
 
     @Autowired
     private BidderService bidderService;
@@ -21,7 +21,7 @@ public class BidderController extends V1Controller {
     @Operation(summary = "Create bidder by setting initial state")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Bidder was successfully created"),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid action for bidder",
                     content = @Content)})
     @PostMapping("/init")
     public void init(@RequestBody BidderInitializationRequest initializationRequest) {
@@ -32,7 +32,7 @@ public class BidderController extends V1Controller {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Bidder successfully calculated next bid",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Integer.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid action for bidder",
                     content = @Content)})
     @GetMapping("/placeBid")
     public Integer getNextBid() {
@@ -42,7 +42,7 @@ public class BidderController extends V1Controller {
     @Operation(summary = "Update bidder with latest bids information")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Bidder was successfully updated"),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+            @ApiResponse(responseCode = "400", description = "Invalid action for bidder",
                     content = @Content)})
     @PostMapping("/bids")
     public void saveBids(@RequestBody SaveBidsRequest bidsRequest) {
