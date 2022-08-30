@@ -6,8 +6,9 @@ BidderController uses [BidderService](optibot-webapp-api/src/main/java/com/dzagu
 
 ## How to run
 ### Using command line
-Execute `mvn clean install` in the root module, then run the application using following command:
-`java -jar optibot-webapp/optibot-webapp-app/target/optibot-webapp-app-1.0.0.jar`
+1. Execute `mvn clean install` in the root module
+2. Run the application using following command:
+   `java -jar optibot-webapp/optibot-webapp-app/target/optibot-webapp-app-1.0.0.jar`
 
 ### Using Docker
 1. Execute `mvn clean install` in the root module

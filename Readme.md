@@ -15,7 +15,8 @@ The solution consists of two submodules:
 
 ## How to run
 ### Using command line 
-Execute `mvn clean install` in the root module, then run the application using following command:
+1. Execute `mvn clean install` in the root module
+2. Run the application using following command:
 `java -jar optibot-webapp/optibot-webapp-app/target/optibot-webapp-app-1.0.0.jar`
 
 ### Using Docker
