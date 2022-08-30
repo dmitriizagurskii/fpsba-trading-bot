@@ -21,5 +21,5 @@ The solution consists of two submodules:
 
 ### Using Docker
 1. Execute `mvn clean install` in the root module
-2. Use docker-compose command: `docker-compose up`
+2. Use docker-compose command to start the application: `docker-compose up`.
 To stop the application use `docker-compose down`.
