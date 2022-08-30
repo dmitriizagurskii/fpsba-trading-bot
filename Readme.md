@@ -12,3 +12,13 @@ The solution consists of two submodules:
 - Code style - PMD
 - Web - Spring Boot
 - Web Documentation - Swagger, OpenAPI
+
+## How to run
+### Using command line 
+Execute `mvn clean install` in the root module, then run the application using following command:
+`java -jar optibot-webapp/optibot-webapp-app/target/optibot-webapp-app-1.0.0.jar`
+
+### Using Docker
+1. Execute `mvn clean install` in the root module
+2. Use docker-compose command: `docker-compose up`
+To stop the application use `docker-compose down`.
