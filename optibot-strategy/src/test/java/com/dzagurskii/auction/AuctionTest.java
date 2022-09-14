@@ -1,6 +1,5 @@
 package com.dzagurskii.auction;
 
-import com.dzagurskii.auction.bidder.AdvancedStrategyBidder;
 import com.dzagurskii.auction.bidder.SingleStrategyBidder;
 import com.dzagurskii.auction.strategy.BidStrategyHolder;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,10 +11,11 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+// Proof that advanced strategy outperforms all basic strategies.
 public class AuctionTest {
 
     @ParameterizedTest
-    @EnumSource(BidStrategyHolder.class)
+    @EnumSource(value = BidStrategyHolder.class, names = "ADVANCED_STRATEGY", mode = EnumSource.Mode.EXCLUDE)
     public void auctionTest(BidStrategyHolder baselineStrategy) {
         int repeats = 50;
         List<AuctionResult> auctionResults =
@@ -45,7 +45,7 @@ public class AuctionTest {
     }
 
     private AuctionResult auctionTest(int quantity, int cash, BidStrategyHolder baselineStrategy) {
-        AdvancedStrategyBidder advancedStrategyBidder = new AdvancedStrategyBidder();
+        SingleStrategyBidder advancedStrategyBidder = new SingleStrategyBidder(BidStrategyHolder.ADVANCED_STRATEGY.getStrategy());
         SingleStrategyBidder baselineStrategyBidder = new SingleStrategyBidder(baselineStrategy.getStrategy());
 
         advancedStrategyBidder.init(quantity, cash);

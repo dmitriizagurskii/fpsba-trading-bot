@@ -1,15 +1,16 @@
 package com.dzagurskii.auction.strategy;
 
-import com.dzagurskii.auction.bidder.StrategyBidder;
+import com.dzagurskii.auction.bidder.history.BidHistory;
+import com.dzagurskii.auction.bidder.state.BidderState;
 
 /**
  * Calculates bid as remainingCash / remainingRounds.
  */
 public class ConstantBidStrategy extends AbstractBidStrategy {
     @Override
-    public int calculateBid(StrategyBidder bidder) {
-        int remainingRounds = (bidder.getInitialQuantity() - bidder.getBidHistory().getQuantitySold()) / 2;
-        int remainingCash = bidder.getInitialCash() - bidder.getBidHistory().getOwnBidSum();
+    public int calculateBid(BidderState bidderState, BidHistory bidHistory) {
+        int remainingRounds = (bidderState.getInitialQuantity() - bidHistory.getQuantitySold()) / 2;
+        int remainingCash = bidderState.getInitialCash() - bidHistory.getOwnBidSum();
         return remainingCash / remainingRounds;
     }
 

@@ -21,8 +21,8 @@ public class OpponentTrackingBidderTest {
     public void initTest() {
         bidder.init(10, 10);
 
-        assertEquals(0, bidder.getOtherQuantity());
-        assertEquals(10, bidder.getOtherCash());
+        assertEquals(0, bidder.getBidderState().getOtherQuantity());
+        assertEquals(10, bidder.getBidderState().getOtherCash());
     }
 
     @Test
@@ -31,8 +31,8 @@ public class OpponentTrackingBidderTest {
 
         bidder.bids(1, 2);
 
-        assertEquals(10 - 2, bidder.getOtherCash());
-        assertEquals(2, bidder.getOtherQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOtherCash());
+        assertEquals(2, bidder.getBidderState().getOtherQuantity());
     }
 
     @Test
@@ -41,8 +41,8 @@ public class OpponentTrackingBidderTest {
 
         bidder.bids(2, 2);
 
-        assertEquals(10 - 2, bidder.getOtherCash());
-        assertEquals(1, bidder.getOtherQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOtherCash());
+        assertEquals(1, bidder.getBidderState().getOtherQuantity());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class OpponentTrackingBidderTest {
 
         bidder.bids(3, 2);
 
-        assertEquals(10 - 2, bidder.getOtherCash());
-        assertEquals(0, bidder.getOtherQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOtherCash());
+        assertEquals(0, bidder.getBidderState().getOtherQuantity());
     }
 }

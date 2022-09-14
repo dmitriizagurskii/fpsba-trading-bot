@@ -31,9 +31,10 @@ public interface BidHistory {
     int getQuantitySold();
     /**
      * Calculate the average winning bid in the auction.
+     *
      * @return average amongst all recorded winning bids.
      */
-    Double getAverageWinningBid();
+    double getAverageWinningBid();
     /**
      * Calculate the median winning bid in the auction.
      * @return median amongst all recorded winning bids.

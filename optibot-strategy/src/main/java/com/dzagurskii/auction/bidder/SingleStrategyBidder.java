@@ -1,13 +1,15 @@
 package com.dzagurskii.auction.bidder;
 
 import com.dzagurskii.auction.strategy.BidStrategy;
+import lombok.Getter;
 
 import java.util.Objects;
 
 /**
  * Uses single {@link BidStrategy} provided in constructor.
  */
-public class SingleStrategyBidder extends StrategyBidder {
+@Getter
+public class SingleStrategyBidder extends OpponentTrackingBidder implements StrategyBidder {
 
     private final BidStrategy strategy;
 
@@ -17,7 +19,7 @@ public class SingleStrategyBidder extends StrategyBidder {
     }
 
     @Override
-    public BidStrategy calculateNextStrategy() {
-        return strategy;
+    int placeNextBid() {
+        return calculateNextBidUsingStrategy();
     }
 }

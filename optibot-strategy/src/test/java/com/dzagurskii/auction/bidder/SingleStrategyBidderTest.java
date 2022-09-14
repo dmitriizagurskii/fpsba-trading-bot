@@ -9,7 +9,7 @@ public class SingleStrategyBidderTest {
 
     @Test
     public void placeNextBidTest_whenStrategySet_thenUseStrategy() {
-        StrategyBidder bidder = new SingleStrategyBidder(BidStrategyHolder.ZERO_STRATEGY.getStrategy());
+        SingleStrategyBidder bidder = new SingleStrategyBidder(BidStrategyHolder.ZERO_STRATEGY.getStrategy());
 
         bidder.init(10, 10);
 

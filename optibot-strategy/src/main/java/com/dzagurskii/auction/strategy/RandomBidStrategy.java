@@ -1,6 +1,7 @@
 package com.dzagurskii.auction.strategy;
 
-import com.dzagurskii.auction.bidder.StrategyBidder;
+import com.dzagurskii.auction.bidder.history.BidHistory;
+import com.dzagurskii.auction.bidder.state.BidderState;
 
 import java.util.Random;
 
@@ -12,8 +13,8 @@ public class RandomBidStrategy extends AbstractBidStrategy {
     Random random = new Random();
 
     @Override
-    public int calculateBid(StrategyBidder bidder) {
-        int cashLeft = bidder.getInitialCash() - bidder.getBidHistory().getOwnBidSum();
+    public int calculateBid(BidderState bidderState, BidHistory bidHistory) {
+        int cashLeft = bidderState.getInitialCash() - bidHistory.getOwnBidSum();
         return random.nextInt(0, cashLeft + 1);
     }
 

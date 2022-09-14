@@ -9,7 +9,7 @@ class ZeroBidStrategyTest extends BidStrategyTest {
     @Test
     void calculateNextBid() {
         BidStrategy zeroBidStrategy = new ZeroBidStrategy();
-        int nextBid = zeroBidStrategy.calculateNextBid(bidder);
+        int nextBid = zeroBidStrategy.calculateNextBid(bidder.getBidderState(), bidder.getBidHistory());
 
         assertEquals(0, nextBid);
     }

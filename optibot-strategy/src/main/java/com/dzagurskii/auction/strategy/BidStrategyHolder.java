@@ -9,7 +9,8 @@ public enum BidStrategyHolder {
     CONSTANT_STRATEGY(new ConstantBidStrategy()),
     ZERO_STRATEGY(new ZeroBidStrategy()),
     AVERAGE_STRATEGY(new AverageBidStrategy()),
-    MEDIAN_STRATEGY(new MedianBidStrategy());
+    MEDIAN_STRATEGY(new MedianBidStrategy()),
+    ADVANCED_STRATEGY(new AdvancedBidStrategy());
 
     private final BidStrategy strategy;
 

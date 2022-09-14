@@ -4,48 +4,51 @@ import com.dzagurskii.auction.bidder.exception.AuctionFinishedException;
 import com.dzagurskii.auction.bidder.exception.BidderNotInitializedException;
 import com.dzagurskii.auction.bidder.history.BidHistory;
 import com.dzagurskii.auction.bidder.history.ListBidHistory;
+import com.dzagurskii.auction.bidder.state.BidderState;
+import lombok.Getter;
 
 /**
  * Basic functionality for {@link Bidder} interface.
- * Keeps initial quantity and cash provided in {@link  Bidder#init(int, int) init(quantity, cash)} method.
- * Along with the history of all bids, tracks remaining cash and gained quantity.
+ * Keeps and updates bidder state and bid history.
  */
+@Getter
 public abstract class BasicBidder implements Bidder {
 
-    private int initialQuantity;
-    private int initialCash;
-    private int ownQuantity;
-    private int ownCash;
+    private BidderState bidderState;
 
     private BidHistory bidHistory;
-    private boolean isInitialized;
 
     @Override
     public void init(int quantity, int cash) {
-        this.initialQuantity = quantity;
-        this.initialCash = cash;
-
-        this.ownQuantity = 0;
-        this.ownCash = cash;
+        bidderState = BidderState.builder()
+                .isInitialized(true)
+                .initialQuantity(quantity)
+                .initialCash(cash)
+                .ownQuantity(0)
+                .ownCash(cash)
+                .build();
 
         this.bidHistory = new ListBidHistory();
-        this.isInitialized = true;
     }
 
     @Override
     public void bids(int own, int other) {
-        validateInitialized();
+        if (!isInitialized()) {
+            throw new BidderNotInitializedException();
+        }
 
-        ownCash -= 2;
-        ownQuantity += getQuantityChange(own, other);
+        bidderState.setOwnCash(bidderState.getOwnCash() - own);
+        bidderState.setOwnQuantity(bidderState.getOwnQuantity() + getQuantityChange(own, other));
 
         bidHistory.addEntry(own, other);
     }
 
     @Override
-    public int placeBid() {
-        validateInitialized();
-        if (bidHistory.getQuantitySold() == initialQuantity) {
+    public final int placeBid() {
+        if (!isInitialized()) {
+            throw new BidderNotInitializedException();
+        }
+        if (bidHistory.getQuantitySold() == bidderState.getInitialQuantity()) {
             throw new AuctionFinishedException();
         }
         return placeNextBid();
@@ -53,33 +56,7 @@ public abstract class BasicBidder implements Bidder {
 
     abstract int placeNextBid();
 
-    int getQuantityChange(int own, int other) {
+    public static int getQuantityChange(int own, int other) {
         return own > other ? 2 : own == other ? 1 : 0;
-    }
-
-    void validateInitialized() {
-        if (!isInitialized) {
-            throw new BidderNotInitializedException();
-        }
-    }
-
-    public int getOwnQuantity() {
-        return ownQuantity;
-    }
-
-    public int getOwnCash() {
-        return ownCash;
-    }
-
-    public int getInitialQuantity() {
-        return initialQuantity;
-    }
-
-    public int getInitialCash() {
-        return initialCash;
-    }
-
-    public BidHistory getBidHistory() {
-        return bidHistory;
     }
 }

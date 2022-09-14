@@ -1,21 +1,19 @@
 package com.dzagurskii.auction.bidder;
 
+import com.dzagurskii.auction.bidder.exception.BidderNotInitializedException;
 import com.dzagurskii.auction.strategy.BidStrategy;
 
 /**
  * Calculates and uses {@link BidStrategy} in order to provide next bid.
  */
-public abstract class StrategyBidder extends BasicBidder {
+public interface StrategyBidder extends Bidder {
 
-    BidStrategy calculateStrategy() {
-        validateInitialized();
-        return calculateNextStrategy();
-    }
+    BidStrategy getStrategy();
 
-    protected abstract BidStrategy calculateNextStrategy();
-
-    @Override
-    int placeNextBid() {
-        return calculateStrategy().calculateNextBid(this);
+    default int calculateNextBidUsingStrategy() {
+        if (!isInitialized()) {
+            throw new BidderNotInitializedException();
+        }
+        return getStrategy().calculateNextBid(this.getBidderState(), this.getBidHistory());
     }
 }

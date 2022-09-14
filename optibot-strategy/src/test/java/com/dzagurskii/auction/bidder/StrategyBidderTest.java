@@ -17,6 +17,6 @@ public class StrategyBidderTest {
     }
     @Test
     public void calculateStrategy_whenNotInitialized_thenException() {
-        assertThrows(BidderNotInitializedException.class, () -> bidder.calculateStrategy());
+        assertThrows(BidderNotInitializedException.class, () -> bidder.calculateNextBidUsingStrategy());
     }
 }

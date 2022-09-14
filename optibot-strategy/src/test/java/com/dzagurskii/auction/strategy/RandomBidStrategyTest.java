@@ -18,7 +18,7 @@ public class RandomBidStrategyTest extends BidStrategyTest {
 
     @Test
     public void calculateNextBidTest_whenRandom_thenInBounds() {
-        int nextBid = bidStrategy.calculateNextBid(bidder);
+        int nextBid = bidStrategy.calculateNextBid(bidder.getBidderState(), bidder.getBidHistory());
         assertTrue(nextBid >= 0);
         assertTrue(nextBid <= 6);
     }
@@ -27,7 +27,7 @@ public class RandomBidStrategyTest extends BidStrategyTest {
     public void calculateNextBidTest_whenZeroCash_ThenZero() {
         Mockito.when(bidder.getBidHistory().getOwnBidSum()).thenReturn(10);
 
-        int nextBid = bidStrategy.calculateNextBid(bidder);
+        int nextBid = bidStrategy.calculateNextBid(bidder.getBidderState(), bidder.getBidHistory());
         assertEquals(0, nextBid);
     }
 }

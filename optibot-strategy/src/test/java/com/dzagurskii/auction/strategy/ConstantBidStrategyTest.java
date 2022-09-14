@@ -10,7 +10,7 @@ class ConstantBidStrategyTest extends BidStrategyTest {
     void calculateNextBid() {
         BidStrategy constantBidStrategy = new ConstantBidStrategy();
 
-        int nextBid = constantBidStrategy.calculateNextBid(bidder);
+        int nextBid = constantBidStrategy.calculateNextBid(bidder.getBidderState(), bidder.getBidHistory());
 
         assertEquals(2, nextBid);
     }

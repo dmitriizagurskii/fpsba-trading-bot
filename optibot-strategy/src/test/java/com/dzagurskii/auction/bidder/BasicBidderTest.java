@@ -22,10 +22,10 @@ public class BasicBidderTest {
     public void initTest() {
         bidder.init(1, 2);
 
-        assertEquals(1, bidder.getInitialQuantity());
-        assertEquals(2, bidder.getInitialCash());
-        assertEquals(0, bidder.getOwnQuantity());
-        assertEquals(2, bidder.getOwnCash());
+        assertEquals(1, bidder.getBidderState().getInitialQuantity());
+        assertEquals(2, bidder.getBidderState().getInitialCash());
+        assertEquals(0, bidder.getBidderState().getOwnQuantity());
+        assertEquals(2, bidder.getBidderState().getOwnCash());
         assertNotNull(bidder.getBidHistory());
     }
 
@@ -35,8 +35,8 @@ public class BasicBidderTest {
         
         bidder.bids(2, 1);
 
-        assertEquals(10 - 2, bidder.getOwnCash());
-        assertEquals(2, bidder.getOwnQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOwnCash());
+        assertEquals(2, bidder.getBidderState().getOwnQuantity());
     }
 
     @Test
@@ -45,8 +45,8 @@ public class BasicBidderTest {
 
         bidder.bids(2, 2);
 
-        assertEquals(10 - 2, bidder.getOwnCash());
-        assertEquals(1, bidder.getOwnQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOwnCash());
+        assertEquals(1, bidder.getBidderState().getOwnQuantity());
     }
 
     @Test
@@ -55,8 +55,8 @@ public class BasicBidderTest {
 
         bidder.bids(2, 3);
 
-        assertEquals(10 - 2, bidder.getOwnCash());
-        assertEquals(0, bidder.getOwnQuantity());
+        assertEquals(10 - 2, bidder.getBidderState().getOwnCash());
+        assertEquals(0, bidder.getBidderState().getOwnQuantity());
     }
 
     @Test
